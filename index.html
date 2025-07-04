@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>济南到北京家庭旅游攻略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .icon-bg {
+            background-color: #e0f2fe;
+        }
+        .icon-color {
+            color: #0ea5e9;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            bottom: -1.5rem;
+            width: 2px;
+            background-color: #d1d5db;
+            z-index: 0;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: calc(1rem - 0.5rem + 1px);
+            top: 1.5rem;
+            height: 1rem;
+            width: 1rem;
+            background-color: #3b82f6;
+            border-radius: 9999px;
+            border: 2px solid white;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold gradient-text">济南 → 北京 家庭畅游攻略</h1>
+            <p class="text-slate-600 mt-2">专为（2大1老1幼）家庭定制的4天3晚温馨之旅</p>
+        </header>
+
+        <!-- Main Summary Card -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">旅行速览</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
+                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-700">目的地</span>
+                    <span class="text-slate-500">北京</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
+                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-700">旅行时间</span>
+                    <span class="text-slate-500">4天3晚</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
+                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-700">出行人员</span>
+                    <span class="text-slate-500">4人 (家庭)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-2">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3a1 1 0 011-1h2.5M12 18v-1h4a1 1 0 001-1v-3a1 1 0 00-1-1h-4a1 1 0 00-1 1v3a1 1 0 001 1h2.5"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-700">预估总花费</span>
+                    <span class="text-blue-600 font-bold text-lg">¥5,800 - ¥7,000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Breakdown -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">费用估算（明细）</h2>
+            <div class="space-y-4">
+                <!-- Transportation -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5-1.5L8 17l2.5-1.5L13 16zM18 8h1a1 1 0 011 1v6a1 1 0 01-1 1h-1v-3l-4-3 4-3z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">交通费 (往返高铁)</h3>
+                        <p class="text-slate-500">济南西-北京南，二等座。儿童免票（无座）。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：(185元/人 * 3人) * 2 = <span class="text-blue-600">约 ¥1,110</span></p>
+                    </div>
+                </div>
+                <!-- Accommodation -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">住宿费 (3晚)</h3>
+                        <p class="text-slate-500">选择交通便利的家庭房或双床房，如前门、崇文门附近。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：600元/晚 * 3晚 = <span class="text-blue-600">约 ¥1,800</span></p>
+                    </div>
+                </div>
+                <!-- Food -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path d="M12 18a6 6 0 006-6h-6v6z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">餐饮费 (4天)</h3>
+                        <p class="text-slate-500">包含正餐、小吃和饮品，丰俭由人。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：(150元/人/天 * 3人) * 4天 = <span class="text-blue-600">约 ¥1,800</span></p>
+                    </div>
+                </div>
+                <!-- Tickets -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 012-2h3a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">景点门票</h3>
+                        <p class="text-slate-500">按计划行程计算，老人可享半价优惠。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：故宫+长城+动物园等 ≈ <span class="text-blue-600">约 ¥800</span></p>
+                    </div>
+                </div>
+                <!-- Local Transport -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">市内交通</h3>
+                        <p class="text-slate-500">主要以地铁为主，辅以少量打车。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：50元/天 * 4天 = <span class="text-blue-600">约 ¥200</span></p>
+                    </div>
+                </div>
+                 <!-- Other -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-700">其他备用</h3>
+                        <p class="text-slate-500">购物、纪念品及其他意外支出。</p>
+                        <p class="font-semibold text-slate-800 mt-1">估算：<span class="text-blue-600">约 ¥500 - ¥1000</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Itinerary -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">行程推荐 (轻松亲子版)</h2>
+            <div class="relative space-y-8">
+                <!-- Day 1 -->
+                <div class="relative pl-8 timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 1: 抵达北京，初探京城</h3>
+                    <p class="text-slate-600">上午：乘坐高铁从济南抵达北京南站，前往酒店办理入住。</p>
+                    <p class="text-slate-600">下午：稍作休息后，可以去<span class="font-semibold">天安门广场</span>远观，感受首都的宏伟。注意不要让老人和孩子太劳累。</p>
+                    <p class="text-slate-600">晚上：逛<span class="font-semibold">前门大街</span>或<span class="font-semibold">王府井</span>，品尝北京小吃，感受夜景。</p>
+                    <p class="text-sm text-amber-600 mt-2">💡 提示：带上婴儿推车会非常省力。</p>
+                </div>
+                <!-- Day 2 -->
+                <div class="relative pl-8 timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 2: 穿越历史，感受皇家气派</h3>
+                    <p class="text-slate-600">上午：游览<span class="font-semibold">故宫博物院</span>。建议提前7天在官方小程序上预定门票。可以租一个讲解器，选择中轴线游览，避免过度劳累。</p>
+                    <p class="text-slate-600">下午：从故宫神武门出来，对面就是<span class="font-semibold">景山公园</span>，体力允许可以登上万春亭，俯瞰故宫全景，非常壮观。</p>
+                    <p class="text-slate-600">晚上：品尝地道的<span class="font-semibold">北京烤鸭</span>。</p>
+                    <p class="text-sm text-amber-600 mt-2">💡 提示：故宫很大，一定要穿舒适的鞋子。</p>
+                </div>
+                <!-- Day 3 -->
+                <div class="relative pl-8 timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 3: 亲近自然或登高望远 (二选一)</h3>
+                    <p class="text-slate-600"><span class="font-semibold">方案A (亲子首选):</span> 前往<span class="font-semibold">北京动物园</span>，看大熊猫和其他可爱的动物，孩子一定会非常喜欢。</p>
+                    <p class="text-slate-600"><span class="font-semibold">方案B (经典体验):</span> 前往<span class="font-semibold">慕田峪长城</span>。相比八达岭，这里人少坡缓，有缆车和索道，对老人和孩子更友好。可以考虑包车或参加一日游。</p>
+                    <p class="text-sm text-amber-600 mt-2">💡 提示：去长城路途较远，要准备好孩子的零食和水。</p>
+                </div>
+                <!-- Day 4 -->
+                <div class="relative pl-8 timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 4: 皇家园林，轻松返程</h3>
+                    <p class="text-slate-600">上午：游览<span class="font-semibold">天坛公园</span>，这里是明清皇帝祭天的地方，建筑宏伟，绿化很好，适合散步，感受当地人晨练的氛围。</p>
+                    <p class="text-slate-600">下午：整理行李，根据高铁时间前往北京南站，结束愉快的旅程。</p>
+                    <p class="text-sm text-amber-600 mt-2">💡 提示：返程票也请提前购买好。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">温馨提示</h2>
+            <ul class="space-y-3 text-slate-600 list-disc list-inside">
+                <li><span class="font-semibold">提前预定：</span>北京的热门景点（如故宫、国家博物馆）和高铁票都需要提前预定，尤其是节假日。</li>
+                <li><span class="font-semibold">证件携带：</span>务必带好所有人的身份证、老年证，儿童携带户口本或身份证，购买优惠票时需要。</li>
+                <li><span class="font-semibold">交通出行：</span>北京地铁非常发达，建议办理一张交通卡或使用手机App扫码乘车，方便快捷。</li>
+                <li><span class="font-semibold">健康与安全：</span>带上常用药品，如感冒药、肠胃药、创可贴等。人多的地方注意看管好孩子和财物。</li>
+                <li><span class="font-semibold">宝宝用品：</span>除了婴儿推车，尿不湿、奶粉、湿巾、小零食、保温杯等宝宝用品要带齐。</li>
+                <li><span class="font-semibold">天气与衣物：</span>出行前查询北京天气，准备合适的衣物。北京早晚温差可能较大。</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-8">
+            <p class="text-slate-500">祝您和家人在北京拥有一次完美、难忘的旅行！</p>
+        </footer>
+
+    </div>
+</body>
+</html>
