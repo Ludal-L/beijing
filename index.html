@@ -1,233 +1,843 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>济南到北京家庭旅游攻略</title>
+    <title>三代同游北京 - 四日温情之旅</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background-color: #f8fafc;
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        neutral: '#F5F7FA',
+                        dark: '#1D2129',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
         }
-        .card-shadow {
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        .icon-bg {
-            background-color: #e0f2fe;
-        }
-        .icon-color {
-            color: #0ea5e9;
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #1d4ed8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 1rem;
-            top: 1.5rem;
-            bottom: -1.5rem;
-            width: 2px;
-            background-color: #d1d5db;
-            z-index: 0;
-        }
-        .timeline-item:last-child::before {
-            display: none;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: calc(1rem - 0.5rem + 1px);
-            top: 1.5rem;
-            height: 1rem;
-            width: 1rem;
-            background-color: #3b82f6;
-            border-radius: 9999px;
-            border: 2px solid white;
-            z-index: 1;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50">
-
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+<body class="bg-gray-50 text-dark">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <i class="fa fa-map-signs text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-primary">北京旅游计划</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#overview" class="font-medium hover:text-primary transition-colors">行程概览</a>
+                <a href="#day-plan" class="font-medium hover:text-primary transition-colors">每日行程</a>
+                <a href="#transportation" class="font-medium hover:text-primary transition-colors">交通指南</a>
+                <a href="#accommodation" class="font-medium hover:text-primary transition-colors">住宿推荐</a>
+                <a href="#tips" class="font-medium hover:text-primary transition-colors">旅行贴士</a>
+            </nav>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
         
-        <!-- Header -->
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold gradient-text">济南 → 北京 家庭畅游攻略</h1>
-            <p class="text-slate-600 mt-2">专为（2大1老1幼）家庭定制的4天3晚温馨之旅</p>
-        </header>
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#overview" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">行程概览</a>
+                <a href="#day-plan" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">每日行程</a>
+                <a href="#transportation" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">交通指南</a>
+                <a href="#accommodation" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">住宿推荐</a>
+                <a href="#tips" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">旅行贴士</a>
+            </div>
+        </div>
+    </header>
 
-        <!-- Main Summary Card -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-4">旅行速览</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
-                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+    <!-- 英雄区域 -->
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://p3-search.byteimg.com/obj/labis/0caf06bd5931f3d21e947844669bff1e" alt="北京天安门" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark/70 to-dark/40"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-6 leading-tight text-shadow">
+                三代同游北京<br>四日温情之旅
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-2xl mx-auto mb-8">
+                精心规划的家庭旅行，让每一位成员都能感受北京的魅力
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#day-plan" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    查看详细行程
+                </a>
+                <a href="#accommodation" class="px-8 py-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-medium rounded-lg transition-all border border-white/30">
+                    住宿推荐
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#overview" class="text-white/80 hover:text-white">
+                <i class="fa fa-angle-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 行程概览 -->
+    <section id="overview" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">行程概览</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    四日行程，兼顾历史文化与休闲娱乐，为全家打造完美旅行体验
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-neutral rounded-xl p-6 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-calendar text-primary text-2xl"></i>
                     </div>
-                    <span class="font-semibold text-slate-700">目的地</span>
-                    <span class="text-slate-500">北京</span>
+                    <h3 class="text-xl font-bold mb-3">第一天</h3>
+                    <p class="text-gray-600">天安门广场、故宫博物院、什刹海</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
-                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                
+                <div class="bg-neutral rounded-xl p-6 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-calendar text-primary text-2xl"></i>
                     </div>
-                    <span class="font-semibold text-slate-700">旅行时间</span>
-                    <span class="text-slate-500">4天3晚</span>
+                    <h3 class="text-xl font-bold mb-3">第二天</h3>
+                    <p class="text-gray-600">天坛公园、北京动物园</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full icon-bg flex items-center justify-center mb-2">
-                        <svg class="w-8 h-8 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                
+                <div class="bg-neutral rounded-xl p-6 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-calendar text-primary text-2xl"></i>
                     </div>
-                    <span class="font-semibold text-slate-700">出行人员</span>
-                    <span class="text-slate-500">4人 (家庭)</span>
+                    <h3 class="text-xl font-bold mb-3">第三天</h3>
+                    <p class="text-gray-600">颐和园、北京烤鸭</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3a1 1 0 011-1h2.5M12 18v-1h4a1 1 0 001-1v-3a1 1 0 00-1-1h-4a1 1 0 00-1 1v3a1 1 0 001 1h2.5"></path></svg>
+                
+                <div class="bg-neutral rounded-xl p-6 card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-calendar text-primary text-2xl"></i>
                     </div>
-                    <span class="font-semibold text-slate-700">预估总花费</span>
-                    <span class="text-blue-600 font-bold text-lg">¥5,800 - ¥7,000</span>
+                    <h3 class="text-xl font-bold mb-3">第四天</h3>
+                    <p class="text-gray-600">自由活动、返程</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Budget Breakdown -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6">费用估算（明细）</h2>
-            <div class="space-y-4">
-                <!-- Transportation -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5-1.5L8 17l2.5-1.5L13 16zM18 8h1a1 1 0 011 1v6a1 1 0 01-1 1h-1v-3l-4-3 4-3z"></path></svg>
+    <!-- 每日行程 -->
+    <section id="day-plan" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">每日行程</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    精心规划的行程安排，让每一天都充实而不累
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- 第一天 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6 md:p-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <span class="font-bold">Day 1</span>
+                            </div>
+                            <h3 class="text-2xl font-bold">皇城气韵与胡同光影</h3>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">交通费 (往返高铁)</h3>
-                        <p class="text-slate-500">济南西-北京南，二等座。儿童免票（无座）。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：(185元/人 * 3人) * 2 = <span class="text-blue-600">约 ¥1,110</span></p>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-sun-o text-secondary mr-2"></i>
+                                    上午
+                                </h4>
+                                <p class="text-gray-600 mb-4">天安门广场 &amp; 故宫博物院</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>提前7天预约故宫门票</li>
+                                    <li>走中轴线游览，保存体力</li>
+                                    <li>从神武门出宫后午餐</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/44d665f413c6e002f0501d212d4a261b" alt="故宫博物院" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-moon-o text-secondary mr-2"></i>
+                                    下午 &amp; 晚上
+                                </h4>
+                                <p class="text-gray-600 mb-4">什刹海风情区</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>打车前往，避开三轮车陷阱</li>
+                                    <li>沿湖边漫步，感受京城韵味</li>
+                                    <li>选择临湖餐厅晚餐</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/12d1a0758dcd37dd71a89f21b9aedaf6" alt="什刹海" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Accommodation -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                
+                <!-- 第二天 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6 md:p-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <span class="font-bold">Day 2</span>
+                            </div>
+                            <h3 class="text-2xl font-bold">天坛祈福与熊猫奇遇</h3>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">住宿费 (3晚)</h3>
-                        <p class="text-slate-500">选择交通便利的家庭房或双床房，如前门、崇文门附近。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：600元/晚 * 3晚 = <span class="text-blue-600">约 ¥1,800</span></p>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-sun-o text-secondary mr-2"></i>
+                                    上午
+                                </h4>
+                                <p class="text-gray-600 mb-4">天坛公园</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>购买联票，走官方推荐省力路线</li>
+                                    <li>东门进，核心建筑群游览</li>
+                                    <li>利用大草坪让宝宝自由活动</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/9d9f1ddc76dee4af922aca5a175bb6f9" alt="天坛公园" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-moon-o text-secondary mr-2"></i>
+                                    下午
+                                </h4>
+                                <p class="text-gray-600 mb-4">北京动物园</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>乘坐地铁直达，直奔熊猫馆</li>
+                                    <li>合理安排体力，按需游览其他场馆</li>
+                                    <li>适时返回酒店休息</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/782786939b384d00b2713e93ccb08a48" alt="北京动物园" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Food -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path d="M12 18a6 6 0 006-6h-6v6z"></path></svg>
+                
+                <!-- 第三天 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6 md:p-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <span class="font-bold">Day 3</span>
+                            </div>
+                            <h3 class="text-2xl font-bold">皇家园林与烤鸭盛宴</h3>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">餐饮费 (4天)</h3>
-                        <p class="text-slate-500">包含正餐、小吃和饮品，丰俭由人。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：(150元/人/天 * 3人) * 4天 = <span class="text-blue-600">约 ¥1,800</span></p>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-sun-o text-secondary mr-2"></i>
+                                    上午
+                                </h4>
+                                <p class="text-gray-600 mb-4">颐和园</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>北宫门入园，水陆结合游览</li>
+                                    <li>乘船横渡昆明湖，欣赏湖光山色</li>
+                                    <li>从新建宫门出园后午餐</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/3118278316c28cc68855e52d582b89c2" alt="颐和园" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-moon-o text-secondary mr-2"></i>
+                                    傍晚
+                                </h4>
+                                <p class="text-gray-600 mb-4">北京烤鸭庆功宴</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>推荐四季民福烤鸭店，提前预订</li>
+                                    <li>享受酥不腻烤鸭，适合家庭聚餐</li>
+                                    <li>利用在线取号，减少等待时间</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/ea7849dea493526342a1d7526813c461" alt="北京烤鸭" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Tickets -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 012-2h3a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5z"></path></svg>
+                
+                <!-- 第四天 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6 md:p-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <span class="font-bold">Day 4</span>
+                            </div>
+                            <h3 class="text-2xl font-bold">自由时光与踏上归途</h3>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">景点门票</h3>
-                        <p class="text-slate-500">按计划行程计算，老人可享半价优惠。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：故宫+长城+动物园等 ≈ <span class="text-blue-600">约 ¥800</span></p>
-                    </div>
-                </div>
-                <!-- Local Transport -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">市内交通</h3>
-                        <p class="text-slate-500">主要以地铁为主，辅以少量打车。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：50元/天 * 4天 = <span class="text-blue-600">约 ¥200</span></p>
-                    </div>
-                </div>
-                 <!-- Other -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-lg icon-bg flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 icon-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-700">其他备用</h3>
-                        <p class="text-slate-500">购物、纪念品及其他意外支出。</p>
-                        <p class="font-semibold text-slate-800 mt-1">估算：<span class="text-blue-600">约 ¥500 - ¥1000</span></p>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-sun-o text-secondary mr-2"></i>
+                                    上午
+                                </h4>
+                                <p class="text-gray-600 mb-4">自由活动</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>文化派：国家博物馆参观</li>
+                                    <li>购物派：王府井或前门大栅栏购物</li>
+                                    <li>休闲派：酒店休息，整理行装</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/d0ec0d47fe76311bf6c7ac12ab294d5b" alt="自由活动" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fa fa-moon-o text-secondary mr-2"></i>
+                                    下午
+                                </h4>
+                                <p class="text-gray-600 mb-4">返程</p>
+                                <ul class="space-y-2 text-gray-600 pl-6 list-disc">
+                                    <li>午餐品尝地道炸酱面</li>
+                                    <li>提前安排好交通前往北京南站</li>
+                                    <li>预留充足时间办理安检和候车</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <img src="https://p3-search.byteimg.com/obj/labis/6472212405e4f45d3a432d49ddbbc4b0" alt="北京南站" class="rounded-lg shadow-md w-full h-48 object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Itinerary -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow mb-8">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6">行程推荐 (轻松亲子版)</h2>
-            <div class="relative space-y-8">
-                <!-- Day 1 -->
-                <div class="relative pl-8 timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 1: 抵达北京，初探京城</h3>
-                    <p class="text-slate-600">上午：乘坐高铁从济南抵达北京南站，前往酒店办理入住。</p>
-                    <p class="text-slate-600">下午：稍作休息后，可以去<span class="font-semibold">天安门广场</span>远观，感受首都的宏伟。注意不要让老人和孩子太劳累。</p>
-                    <p class="text-slate-600">晚上：逛<span class="font-semibold">前门大街</span>或<span class="font-semibold">王府井</span>，品尝北京小吃，感受夜景。</p>
-                    <p class="text-sm text-amber-600 mt-2">💡 提示：带上婴儿推车会非常省力。</p>
+    <!-- 交通指南 -->
+    <section id="transportation" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">交通指南</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    为家庭出行精心规划的交通方案，让您的旅程更加顺畅
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-neutral rounded-xl p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-train text-primary mr-2"></i>
+                            高铁出行
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>优先选择济南至北京南的高铁，车程1.5-2小时</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>通过12306官方平台购票，提前选座</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>推荐上午9-10点出发的车次，避免清晨匆忙</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-neutral rounded-xl p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-subway text-primary mr-2"></i>
+                            地铁出行
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>优选4号线、5号线、8号线、14号线，无障碍设施完善</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>提前查询站点无障碍设施，保存地铁服务热线96165</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>避免在1号线和2号线换乘，减少搬运婴儿车的麻烦</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-neutral rounded-xl p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-car text-primary mr-2"></i>
+                            出租车/网约车
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>下载滴滴出行App，绑定支付方式</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>长距离优先选择地铁，短途或疲劳时使用网约车</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>天安门等景点建议直接打车到附近安检口</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- Day 2 -->
-                <div class="relative pl-8 timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 2: 穿越历史，感受皇家气派</h3>
-                    <p class="text-slate-600">上午：游览<span class="font-semibold">故宫博物院</span>。建议提前7天在官方小程序上预定门票。可以租一个讲解器，选择中轴线游览，避免过度劳累。</p>
-                    <p class="text-slate-600">下午：从故宫神武门出来，对面就是<span class="font-semibold">景山公园</span>，体力允许可以登上万春亭，俯瞰故宫全景，非常壮观。</p>
-                    <p class="text-slate-600">晚上：品尝地道的<span class="font-semibold">北京烤鸭</span>。</p>
-                    <p class="text-sm text-amber-600 mt-2">💡 提示：故宫很大，一定要穿舒适的鞋子。</p>
-                </div>
-                <!-- Day 3 -->
-                <div class="relative pl-8 timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 3: 亲近自然或登高望远 (二选一)</h3>
-                    <p class="text-slate-600"><span class="font-semibold">方案A (亲子首选):</span> 前往<span class="font-semibold">北京动物园</span>，看大熊猫和其他可爱的动物，孩子一定会非常喜欢。</p>
-                    <p class="text-slate-600"><span class="font-semibold">方案B (经典体验):</span> 前往<span class="font-semibold">慕田峪长城</span>。相比八达岭，这里人少坡缓，有缆车和索道，对老人和孩子更友好。可以考虑包车或参加一日游。</p>
-                    <p class="text-sm text-amber-600 mt-2">💡 提示：去长城路途较远，要准备好孩子的零食和水。</p>
-                </div>
-                <!-- Day 4 -->
-                <div class="relative pl-8 timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-xl font-bold text-blue-600 mb-1">Day 4: 皇家园林，轻松返程</h3>
-                    <p class="text-slate-600">上午：游览<span class="font-semibold">天坛公园</span>，这里是明清皇帝祭天的地方，建筑宏伟，绿化很好，适合散步，感受当地人晨练的氛围。</p>
-                    <p class="text-slate-600">下午：整理行李，根据高铁时间前往北京南站，结束愉快的旅程。</p>
-                    <p class="text-sm text-amber-600 mt-2">💡 提示：返程票也请提前购买好。</p>
+                
+                <div class="flex flex-col justify-center">
+                    <div class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+                        <h3 class="text-xl font-bold mb-6 text-center">北京地铁优选线路</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-[#0052A0] flex items-center justify-center text-white mr-4">
+                                    4
+                                </div>
+                                <div>
+                                    <p class="font-medium">4号线</p>
+                                    <p class="text-sm text-gray-600">北京南站、动物园、颐和园</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-[#FCCC0A] flex items-center justify-center text-white mr-4">
+                                    5
+                                </div>
+                                <div>
+                                    <p class="font-medium">5号线</p>
+                                    <p class="text-sm text-gray-600">天坛、崇文门、雍和宫</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-[#169B62] flex items-center justify-center text-white mr-4">
+                                    8
+                                </div>
+                                <div>
+                                    <p class="font-medium">8号线</p>
+                                    <p class="text-sm text-gray-600">什刹海、奥林匹克公园</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-[#0096D6] flex items-center justify-center text-white mr-4">
+                                    14
+                                </div>
+                                <div>
+                                    <p class="font-medium">14号线</p>
+                                    <p class="text-sm text-gray-600">北京南站</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Tips -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6">温馨提示</h2>
-            <ul class="space-y-3 text-slate-600 list-disc list-inside">
-                <li><span class="font-semibold">提前预定：</span>北京的热门景点（如故宫、国家博物馆）和高铁票都需要提前预定，尤其是节假日。</li>
-                <li><span class="font-semibold">证件携带：</span>务必带好所有人的身份证、老年证，儿童携带户口本或身份证，购买优惠票时需要。</li>
-                <li><span class="font-semibold">交通出行：</span>北京地铁非常发达，建议办理一张交通卡或使用手机App扫码乘车，方便快捷。</li>
-                <li><span class="font-semibold">健康与安全：</span>带上常用药品，如感冒药、肠胃药、创可贴等。人多的地方注意看管好孩子和财物。</li>
-                <li><span class="font-semibold">宝宝用品：</span>除了婴儿推车，尿不湿、奶粉、湿巾、小零食、保温杯等宝宝用品要带齐。</li>
-                <li><span class="font-semibold">天气与衣物：</span>出行前查询北京天气，准备合适的衣物。北京早晚温差可能较大。</li>
-            </ul>
+    <!-- 住宿推荐 -->
+    <section id="accommodation" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">住宿推荐</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    精选家庭友好型酒店，为您提供舒适的休息环境
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 酒店1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/labis/c4216f638489dab5988a69546008b544" alt="北京新侨诺富特饭店" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold">北京新侨诺富特饭店</h3>
+                            <div class="flex items-center">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <span class="ml-1 font-medium">9.1</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">紧邻崇文门地铁站，5号线E口设直梯直达地面，地理位置绝佳，服务稳定。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">地铁直达</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">连通房</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">家庭房</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥¥¥</span>
+                            <a href="#" class="text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 酒店2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/labis/a46b9cd2284023445f515e25a2979902" alt="北京新世界酒店" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold">北京新世界酒店</h3>
+                            <div class="flex items-center">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <span class="ml-1 font-medium">9.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">步行至崇文门地铁站，交通便利，豪华型酒店，设施新，服务好。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">豪华型</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">连通房</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">家庭房</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥¥¥¥</span>
+                            <a href="#" class="text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 酒店3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/labis/e96da3189e0bc07db893740a60a6da19" alt="北京王府井丽亭酒店" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold">北京王府井丽亭酒店</h3>
+                            <div class="flex items-center">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <span class="ml-1 font-medium">8.8</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">靠近灯市口地铁站（5号线），现代商务型酒店，常有连通房型可选。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">商务型</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">连通房</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">性价比高</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold">¥¥¥</span>
+                            <a href="#" class="text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="text-center mt-8">
-            <p class="text-slate-500">祝您和家人在北京拥有一次完美、难忘的旅行！</p>
-        </footer>
+    <!-- 旅行贴士 -->
+    <section id="tips" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">旅行贴士</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    实用小贴士，让您的旅行更加顺利和舒适
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-check-circle text-primary mr-2"></i>
+                        必备物品清单
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>轻便型婴儿推车</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>婴儿背带</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>充足的零食和辅食</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>熟悉的奶瓶、水杯和餐具</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>平板电脑或安抚玩具</span>
+                            </li>
+                        </ul>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>舒适的健步鞋</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>常备药品和应急药品</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>轻薄的披肩或开衫</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>便携式充电宝</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>所有人的身份证原件</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-info-circle text-primary mr-2"></i>
+                        重要提示
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                            <h4 class="font-bold mb-2">景点预约</h4>
+                            <p class="text-gray-600">故宫、国家博物馆等景点需提前7天预约，建议尽早规划行程并预订门票。</p>
+                        </div>
+                        
+                        <div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                            <h4 class="font-bold mb-2">交通选择</h4>
+                            <p class="text-gray-600">北京地铁虽然便捷，但部分老线路无障碍设施不完善，建议优先选择4、5、8、14号线。</p>
+                        </div>
+                        
+                        <div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                            <h4 class="font-bold mb-2">酒店预订</h4>
+                            <p class="text-gray-600">家庭出行建议选择连通房，既保证隐私又方便照顾家人，预订时需特别说明。</p>
+                        </div>
+                        
+                        <div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                            <h4 class="font-bold mb-2">行程节奏</h4>
+                            <p class="text-gray-600">行程安排不要过于紧凑，每天保留足够的休息时间，避免老人和孩子过度疲劳。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <h3 class="text-xl font-bold mb-6 text-center">景点票务信息</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg shadow-md">
+                        <thead>
+                            <tr class="bg-primary text-white">
+                                <th class="py-3 px-6 text-left">景点名称</th>
+                                <th class="py-3 px-6 text-left">预约渠道</th>
+                                <th class="py-3 px-6 text-left">预售期</th>
+                                <th class="py-3 px-6 text-left">成人票价</th>
+                                <th class="py-3 px-6 text-left">儿童优惠</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-6">故宫博物院</td>
+                                <td class="py-3 px-6">微信小程序</td>
+                                <td class="py-3 px-6">提前7日</td>
+                                <td class="py-3 px-6">60元/40元</td>
+                                <td class="py-3 px-6">6岁以下免费</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-3 px-6">天坛公园</td>
+                                <td class="py-3 px-6">微信公众号</td>
+                                <td class="py-3 px-6">现场可购</td>
+                                <td class="py-3 px-6">28元/24元</td>
+                                <td class="py-3 px-6">1.2米以下免费</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6">颐和园</td>
+                                <td class="py-3 px-6">微信公众号</td>
+                                <td class="py-3 px-6">现场可购</td>
+                                <td class="py-3 px-6">60元/50元</td>
+                                <td class="py-3 px-6">6岁以下免费</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-3 px-6">北京动物园</td>
+                                <td class="py-3 px-6">公众号</td>
+                                <td class="py-3 px-6">提前1日</td>
+                                <td class="py-3 px-6">19元/14元</td>
+                                <td class="py-3 px-6">1.2米以下免费</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6">国家博物馆</td>
+                                <td class="py-3 px-6">微信小程序</td>
+                                <td class="py-3 px-6">提前7日</td>
+                                <td class="py-3 px-6">免费</td>
+                                <td class="py-3 px-6">免费</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-</body>
-</html>
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">三代同游北京</h3>
+                    <p class="text-gray-400 mb-4">
+                        为您精心规划的家庭旅行攻略，让每一位成员都能享受旅程的乐趣。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#overview" class="text-gray-400 hover:text-white transition-colors">行程概览</a></li>
+                        <li><a href="#day-plan" class="text-gray-400 hover:text-white transition-colors">每日行程</a></li>
+                        <li><a href="#transportation" class="text-gray-400 hover:text-white transition-colors">交通指南</a></li>
+                        <li><a href="#accommodation" class="text-gray-400 hover:text-white transition-colors">住宿推荐</a></li>
+                        <li><a href="#tips" class="text-gray-400 hover:text-white transition-colors">旅行贴士</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">1146952100@qq.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">+86 13176689913</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">济南市唐冶街道</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 三代同游北京. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('bg-white/90');
+                navbar.classList.add('bg-white');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('bg-white/90');
+                navbar.classList.remove('bg-white');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+
+    </body></html>
